@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 app.use('/student',studentRouter);
 app.use('/faculty',facultyRouter);
-app.use('./user',userRouter);
+app.use('/user',userRouter);
 // app.use('/product',productRouter);
 // app.use('/product',productRouter);
 app.use((req,res,next)=>
@@ -28,7 +28,7 @@ mongoose.connection.on('error',err=>{
    console.log("databased not connected");
 });
 mongoose.connection.on('connected',connected=>{
-    console.log("database connected");
+    console.log("database connected successfully");
 });
 
 
