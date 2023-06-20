@@ -1,15 +1,22 @@
 const express = require('express');
 const app=express();
+const fileUpload = require('express-fileupload');
 const studentRouter = require('./api/routes/student');
 const facultyRouter = require('./api/routes/faculty');
 const userRouter = require('./api/routes/user');
+const productRouter = require('./api/routes/product');
 // const productRouter = require('./api/routes/product');
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
+
 app.use('/student',studentRouter);
 app.use('/faculty',facultyRouter);
 app.use('/user',userRouter);
+app.use('/product',productRouter);
+app.use(fileUpload({
+    useTempFiles:true,
+}))
 // app.use('/product',productRouter);
 // app.use('/product',productRouter);
 app.use((req,res,next)=>
